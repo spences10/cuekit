@@ -59,8 +59,9 @@
 			<Minus class="h-3 w-3" />
 		</Button>
 		<Slider
-			value={[prompter_state.speed]}
-			onValueChange={(v) => prompter_state.set_speed(v[0])}
+			type="single"
+			value={prompter_state.speed}
+			onValueChange={(v: number) => prompter_state.set_speed(v)}
 			min={1}
 			max={10}
 			step={1}

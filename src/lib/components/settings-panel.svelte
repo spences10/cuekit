@@ -33,9 +33,10 @@
 			<div class="flex items-center gap-2">
 				<span class="w-16 text-sm text-muted-foreground">Size</span>
 				<Slider
-					value={[settings_state.data.font_size]}
-					onValueChange={(v) =>
-						settings_state.update('font_size', v[0])}
+					type="single"
+					value={settings_state.data.font_size}
+					onValueChange={(v: number) =>
+						settings_state.update('font_size', v)}
 					min={24}
 					max={96}
 					step={4}
@@ -72,9 +73,10 @@
 			<div class="flex items-center gap-2">
 				<span class="w-16 text-sm text-muted-foreground">Height</span>
 				<Slider
-					value={[settings_state.data.line_height]}
-					onValueChange={(v) =>
-						settings_state.update('line_height', v[0])}
+					type="single"
+					value={settings_state.data.line_height}
+					onValueChange={(v: number) =>
+						settings_state.update('line_height', v)}
 					min={1}
 					max={3}
 					step={0.1}
@@ -159,9 +161,10 @@
 				<span class="w-20 text-sm text-muted-foreground">Opacity</span
 				>
 				<Slider
-					value={[settings_state.data.background_opacity]}
-					onValueChange={(v) =>
-						settings_state.update('background_opacity', v[0])}
+					type="single"
+					value={settings_state.data.background_opacity}
+					onValueChange={(v: number) =>
+						settings_state.update('background_opacity', v)}
 					min={0}
 					max={100}
 					step={5}
@@ -206,9 +209,10 @@
 					>Position</span
 				>
 				<Slider
-					value={[settings_state.data.guide_position]}
-					onValueChange={(v) =>
-						settings_state.update('guide_position', v[0])}
+					type="single"
+					value={settings_state.data.guide_position}
+					onValueChange={(v: number) =>
+						settings_state.update('guide_position', v)}
 					min={10}
 					max={90}
 					step={1}
@@ -254,9 +258,10 @@
 		<h3 class="mb-3 text-sm font-medium">Margins</h3>
 		<div class="flex items-center gap-2">
 			<Slider
-				value={[settings_state.data.margin_percent]}
-				onValueChange={(v) =>
-					settings_state.update('margin_percent', v[0])}
+				type="single"
+				value={settings_state.data.margin_percent}
+				onValueChange={(v: number) =>
+					settings_state.update('margin_percent', v)}
 				min={0}
 				max={40}
 				step={5}

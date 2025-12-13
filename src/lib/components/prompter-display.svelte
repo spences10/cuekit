@@ -12,20 +12,19 @@
 	let text_element = $state<HTMLDivElement | null>(null);
 
 	$effect(() => {
-		if (container && text_element) {
+		const c = container;
+		const t = text_element;
+		if (c && t) {
 			// Update dimensions when content or font size changes
 			const update_dimensions = () => {
-				prompter_state.set_dimensions(
-					text_element.scrollHeight,
-					container.clientHeight,
-				);
+				prompter_state.set_dimensions(t.scrollHeight, c.clientHeight);
 			};
 
 			update_dimensions();
 
 			const observer = new ResizeObserver(update_dimensions);
-			observer.observe(container);
-			observer.observe(text_element);
+			observer.observe(c);
+			observer.observe(t);
 
 			return () => observer.disconnect();
 		}
