@@ -16,7 +16,6 @@ export interface Settings {
 	guide_opacity: number; // 0-100
 	flip_horizontal: boolean;
 	flip_vertical: boolean;
-	background_opacity: number; // 0-100
 }
 
 const STORAGE_KEY = 'cuekit_settings';
@@ -35,7 +34,6 @@ const DEFAULT_SETTINGS: Settings = {
 	guide_opacity: 50,
 	flip_horizontal: false,
 	flip_vertical: false,
-	background_opacity: 100,
 };
 
 class SettingsState {
@@ -51,10 +49,7 @@ class SettingsState {
 	});
 
 	container_style = $derived({
-		backgroundColor:
-			this.data.background_opacity < 100
-				? `rgba(0, 0, 0, ${this.data.background_opacity / 100})`
-				: this.data.background_color,
+		backgroundColor: this.data.background_color,
 		transform: `scale(${this.data.flip_horizontal ? -1 : 1}, ${this.data.flip_vertical ? -1 : 1})`,
 	});
 

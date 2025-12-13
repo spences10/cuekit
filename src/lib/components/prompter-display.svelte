@@ -47,9 +47,7 @@
 <div
 	bind:this={container}
 	class="relative h-full w-full overflow-hidden"
-	style:background-color={settings_state.data.background_opacity < 100
-		? `rgba(0, 0, 0, ${settings_state.data.background_opacity / 100})`
-		: settings_state.data.background_color}
+	style:background-color={settings_state.data.background_color}
 	style:transform="scale({settings_state.data.flip_horizontal
 		? -1
 		: 1}, {settings_state.data.flip_vertical ? -1 : 1})"

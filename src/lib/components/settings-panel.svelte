@@ -157,23 +157,6 @@
 					class="h-8 w-16 p-1"
 				/>
 			</div>
-			<div class="flex items-center gap-2">
-				<span class="w-20 text-sm text-muted-foreground">Opacity</span
-				>
-				<Slider
-					type="single"
-					value={settings_state.data.background_opacity}
-					onValueChange={(v: number) =>
-						settings_state.update('background_opacity', v)}
-					min={0}
-					max={100}
-					step={5}
-					class="flex-1"
-				/>
-				<span class="w-8 text-right text-sm"
-					>{settings_state.data.background_opacity}%</span
-				>
-			</div>
 		</div>
 	</div>
 
