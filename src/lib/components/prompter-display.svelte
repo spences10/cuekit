@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { prompter_state } from '$lib/state/prompter.svelte';
 	import { settings_state } from '$lib/state/settings.svelte';
+	import { onMount } from 'svelte';
 
 	interface Props {
 		content: string;
@@ -11,23 +12,21 @@
 	let container = $state<HTMLDivElement | null>(null);
 	let text_element = $state<HTMLDivElement | null>(null);
 
-	$effect(() => {
-		const c = container;
-		const t = text_element;
-		if (c && t) {
-			// Update dimensions when content or font size changes
-			const update_dimensions = () => {
-				prompter_state.set_dimensions(t.scrollHeight, c.clientHeight);
-			};
+	onMount(() => {
+		const update_dimensions = () => {
+			prompter_state.set_dimensions(
+				text_element?.scrollHeight || 0,
+				container?.clientHeight || 0,
+			);
+		};
 
-			update_dimensions();
+		update_dimensions();
 
-			const observer = new ResizeObserver(update_dimensions);
-			observer.observe(c);
-			observer.observe(t);
+		const observer = new ResizeObserver(update_dimensions);
+		if (container) observer.observe(container);
+		if (text_element) observer.observe(text_element);
 
-			return () => observer.disconnect();
-		}
+		return () => observer.disconnect();
 	});
 
 	// Parse content into lines, detecting markers
