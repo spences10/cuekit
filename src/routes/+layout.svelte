@@ -1,9 +1,17 @@
 <script lang="ts">
 	import './layout.css';
-	import favicon from '$lib/assets/favicon.svg';
 
 	let { children } = $props();
 </script>
 
-<svelte:head><link rel="icon" href={favicon} /></svelte:head>
-{@render children()}
+<svelte:head>
+	<title>CueKit - Web Teleprompter</title>
+	<meta
+		name="description"
+		content="Professional web-based teleprompter with smooth scrolling"
+	/>
+</svelte:head>
+
+<div class="dark">
+	{@render children()}
+</div>
